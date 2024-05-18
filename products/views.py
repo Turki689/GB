@@ -12,7 +12,7 @@ class ProductsListAPIView(ListAPIView):
         "category__slug": ['exact']
     }
     search_fields = ['title', 'description', 'category__name', 'category__slug', 'category__id', 'id']
-    ordering_fields = ['unite_price', 'title', 'date']
+    ordering_fields = ['unit_price', 'title', 'date']
 
     def get_queryset(self):
         if slug := self.kwargs.get('slug', None):
