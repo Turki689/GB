@@ -11,14 +11,15 @@ class ProductsListAPIView(ListAPIView):
     filterset_fields = {
         "category__slug": ['exact']
     }
-    search_fields = ['title', 'description', 'category__name', 'category__slug', 'category__id', 'id']
+    search_fields = ['title', 'description', 'category__name', 'category__slug', 'category__id', 'id',
+                     ]
     ordering_fields = ['unit_price', 'title', 'date']
 
     def get_queryset(self):
         if slug := self.kwargs.get('slug', None):
             category = get_object_or_404(Category, slug=slug)
             return Product.objects.filter(
-                category_id__in=category.get_descendants(include_self=True).values_list('id', flat=True)
+                category_id__in=category.get_descendants(include_self=True).values_list('id', flat=True),
             )
         return Product.objects.all()
 

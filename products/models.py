@@ -13,7 +13,7 @@ class Product(models.Model):
     unit_price = models.FloatField(default=0.00)
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

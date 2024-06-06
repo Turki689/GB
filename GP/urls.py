@@ -6,5 +6,6 @@ urlpatterns = [
     # path('store/', include("store.urls"))
     path('categories/', include("categories.urls", namespace="categories")),
     path('products/', include('products.urls', namespace='products')),
-    path('orders/', include('orders.urls', namespace='orders'))
+    path('orders/', include('orders.urls', namespace='orders')),
+    path('companies/', include('companies.urls', namespace='companies'))
 ]

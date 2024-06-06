@@ -1,5 +1,21 @@
 from django.contrib import admin
 
-from orders.models import Order
+from .models import Item, Order
 
-admin.site.register(Order, admin.ModelAdmin)
+
+class ItemInline(admin.TabularInline):
+    model = Item
+    fields = ['product', 'quantity', 'price']
+    readonly_fields = ['price', 'product', 'quantity']
+    extra = 1
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'email', 'phone_number', 'country', 'city',
+                    'zip_code', 'state', 'username']
+    readonly_fields = ['id', 'email', 'phone_number', 'country', 'city',
+                       'zip_code', 'state', 'username']
+    inlines = [ItemInline]
+
+
+admin.site.register(Order, OrderAdmin)

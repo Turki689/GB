@@ -3,7 +3,7 @@ from rest_framework import authentication, permissions, status
 from django.urls import include,path
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
-from .models import Company, SubCategory
+from .models import Company
 from products.models import Product
 from ..categories.models import Category
 from .serializer import ProductSerializer,CategorySerializer,SubCategorySerializer,CompanySerializer
