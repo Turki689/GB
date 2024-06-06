@@ -12,6 +12,8 @@ class Company(models.Model):
         verbose_name = _("Company")
         verbose_name_plural = _("Companies")
 
+    def get_img_upload_path(instance, filename):
+        return f'{instance.name}/images/{filename}'
     name = models.CharField(max_length=255)
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
@@ -21,6 +23,8 @@ class Company(models.Model):
     address = models.TextField()
     email = models.EmailField()
     products = models.ManyToManyField(Product)
+    image = models.ImageField(upload_to=get_img_upload_path)
+
 
     def __str__(self):
         return self.name
