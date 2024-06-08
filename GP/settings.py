@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-h)41oqgw%x0z^!cfy1lab=xlj=1b*b&9+(#+3myvqi0w7tup=%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS_1 = ['ngrok http http://localhost:8080']
+ALLOWED_HOSTS_2 = ['http://127.0.0.1:8000']
 # Application definition
 
 MEDIA_URL = '/media/'
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'products',
     'companies',
     'django_filters',
-    'orders'
+    'orders',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
+]
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
 ]
 
 ROOT_URLCONF = 'GP.urls'
@@ -132,6 +140,14 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
-        'rest_framework.filters.SearchFilter'
-    ]
+        'rest_framework.filters.SearchFilter',
+
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
 }
