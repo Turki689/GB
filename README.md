@@ -10,6 +10,7 @@ Orders
 Companies
 
 Categories
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 It was developed as a graduation project to demonstrate backend development skills, focusing on RESTful API design and efficient data handling.
 
@@ -23,7 +24,11 @@ Orders: Handle order creation, updates, and status tracking.
 
 Companies: Manage company data related to products and orders.
 
-Categories and Subcategories: Organize products hierarchically into categories and subcategories.
+Categories and Subcategories: Organize products hierarchically into categories and subcategories using MPTT (Modified Preorder Tree Traversal).
+
+Filtering: Easily filter data across endpoints using Django Filter for precise querying.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Technologies Used
 
@@ -32,6 +37,7 @@ Backend: Django, Django REST Framework
 Database: PostgreSQL
 
 Authentication: Token-based authentication
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Tools:
 
@@ -40,3 +46,5 @@ Django ORM for database operations
 Django admin for data management
 
 Custom permissions for secure API access
+
+Django Filter for advanced query filtering
